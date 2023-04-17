@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container-fluid pb-3"> 
+    <div class="dropdown">
+      <a href="addsp" class="list-group-item list-group-item-action"><img
+          src="https://png.pngtree.com/png-vector/20190120/ourlarge/pngtree-add-vector-icon-png-image_470700.jpg" alt=""
+          style="height: 60px;"></a>
+    </div>
+
+     <form action="/search_sanpham" method="GET" class="d-flex justify-content-center" style="margin: 20px auto;">
+        <div class="form-group w-45" >
+            <input type="text" name="query" class="form-control border-success" placeholder="Tìm kiếm theo tên...">
+        </div>
+        <button type="submit" class="btn btn-primary " style="margin-left: 10px;">Tìm kiếm</button>
+    </form>
+
+    <div class="bg-light border rounded-3">
+      <h2>Danh sách sản phẩm</h2>
+      <table border="1" class="table table-hover text-center">
+        <tr class="info text-center">
+          <th class="text-center">Mã sản phẩm</th>
+          <th class="text-center">tên sản phẩm</th>
+          <th class="text-center">Ảnh sản phẩm</th>
+          <th class="text-center">loại sản phẩm</th>
+          <th class="text-center">giá sản phẩm</th>
+          <th></th>
+
+        </tr>
+        <tr>
+          {{#each listSP}}
+        <tr>
+          <td> {{this.masp}}</td>
+          <td>{{this.tensp}}</td>
+          <td>
+            <img src={{this.anhsp}} alt="" style="width: 50px; height: 50px;">
+          </td>
+          <td>{{this.loaisp}}</td>
+          <td>{{this.giasp}}</td>
+          <td>
+            <a href="updatesp/{{this._id}}" class="btn btn-primary btn-sm">Edit</a>
+            <a href="deletesp/{{this._id}}" onclick="return confirm('Bạn có chắc mún xóa khum?')"
+              class="btn btn-primary btn-sm">Delete</a>
+          </td>
+        </tr>
+        {{/each}}
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>
